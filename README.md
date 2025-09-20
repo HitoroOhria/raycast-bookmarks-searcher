@@ -22,3 +22,17 @@ run lint.
 ```sehll
 $ npm run lint
 ```
+
+## TODO
+
+- Browser compatible
+  - [ ] Brave
+  - [ ] Chrome
+  - [ ] Safari
+- OS compatible
+  - [x] macOS
+  - [ ] Linux
+  - [ ] Windows
+- Feature
+  - [ ] toggle URL display
+  - [ ] fallback favicon
