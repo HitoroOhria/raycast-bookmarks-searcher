@@ -1,28 +1,47 @@
-import { ActionPanel, Action, Icon, List } from "@raycast/api";
+import { ActionPanel, Action, Icon, List, showToast, Toast } from "@raycast/api";
+import { useEffect, useState } from "react";
 
-const ITEMS = Array.from(Array(3).keys()).map((key) => {
-  return {
-    id: key,
-    icon: Icon.Bird,
-    title: "Title " + key,
-    subtitle: "Subtitle",
-    accessory: "Accessory",
-  };
-});
+import { getChromiumBookmarks } from "./getChromiumBookmarks";
+import { Bookmark, getBookmarksAsFlatten } from "./ChromiumBookmark";
+import { getDefaultFaviconUrl } from "./getDefaultFaviconUrl";
 
 export default function Command() {
+  const [bookmarks, setBookmarks] = useState<Bookmark[] | null>(null);
+
+  useEffect(() => {
+    getChromiumBookmarks()
+      .then((chromiumBookmarks) => {
+        const bookmarks = getBookmarksAsFlatten(chromiumBookmarks!);
+        setBookmarks(bookmarks);
+      })
+      .catch((err: Error) => {
+        console.error("getChromiumBookmarks():", err);
+        showToast({
+          style: Toast.Style.Failure,
+          title: "Something went wrong",
+          message: err.message,
+        });
+      });
+  }, []);
+
   return (
-    <List>
-      {ITEMS.map((item) => (
+    <List isLoading={bookmarks === null} searchBarPlaceholder="Search bookmarks...">
+      {bookmarks?.map((bookmark) => (
         <List.Item
-          key={item.id}
-          icon={item.icon}
-          title={item.title}
-          subtitle={item.subtitle}
-          accessories={[{ icon: Icon.Text, text: item.accessory }]}
+          key={bookmark.id}
+          icon={getDefaultFaviconUrl(bookmark.url)}
+          title={bookmark.name}
+          // subtitle={bookmark.url}
+          accessories={[
+            {
+              icon: Icon.Folder,
+              text: bookmark.parentFolders.join(" > "),
+            },
+          ]}
           actions={
             <ActionPanel>
-              <Action.CopyToClipboard content={item.title} />
+              <Action.OpenInBrowser url={bookmark.url} />
+              <Action.CopyToClipboard content={bookmark.url} />
             </ActionPanel>
           }
         />
