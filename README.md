@@ -2,6 +2,8 @@
 
 Raycast command that search bookmarks from browser.
 
+![Image](https://github.com/user-attachments/assets/bbaaecd3-2cd8-4b98-9562-056be4c80f89)
+
 ## Development
 
 build and use.
