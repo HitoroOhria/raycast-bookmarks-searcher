@@ -35,6 +35,9 @@ $ npm run lint
   - [x] macOS
   - [ ] Linux
   - [ ] Windows
+- Settings
+  - [ ] create extension icon
+  - [ ] public extension
 - Feature
-  - [ ] toggle URL display
+  - [ ] toggle URL display as subtitle
   - [ ] fallback favicon
