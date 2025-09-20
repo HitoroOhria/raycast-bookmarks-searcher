@@ -10,7 +10,7 @@
     {
       "name": "search-bookmarks",
       "title": "Search Bookmarks",
-      "description": "",
+      "description": "search bookmarks and show list on Raycast",
       "mode": "view"
     }
   ],
