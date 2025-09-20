@@ -1,6 +1,6 @@
 # Bookmarks Searcher
 
-Raycast command that search borowser bookmarks from local and display in list.
+Raycast command that search bookmarks from browser.
 
 ## Development
 
