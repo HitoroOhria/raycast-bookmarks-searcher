@@ -2,8 +2,8 @@ import { ActionPanel, Action, Icon, List, showToast, Toast } from "@raycast/api"
 import { useEffect, useState } from "react";
 
 import { getChromiumBookmarks } from "./getChromiumBookmarks";
-import { Bookmark, getBookmarksAsFlatten } from "./ChromiumBookmark";
 import { getDefaultFaviconUrl } from "./getDefaultFaviconUrl";
+import { Bookmark, getBookmarksAsFlatten } from "./Bookmark";
 
 export default function Command() {
   const [bookmarks, setBookmarks] = useState<Bookmark[] | null>(null);
