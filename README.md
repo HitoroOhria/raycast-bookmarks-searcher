@@ -28,7 +28,7 @@ $ npm run lint
 ## TODO
 
 - Browser compatible
-  - [ ] Brave
+  - [x] Brave
   - [ ] Chrome
   - [ ] Safari
 - Settings
